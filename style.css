@@ -1,0 +1,18 @@
+#playArea {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 40vw;
+    height: 40vw;
+    align-self: center;
+}
+
+.space {
+    border: 1rem solid black;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.space:hover {
+    background-color: grey;
+}

@@ -7,20 +7,41 @@ const Gameboard = (function () {
 })();
 
 const choice = (function () {
-    const player = (empty) => parseInt(prompt("please choose one of the following empty spaces", String(empty)));
+    const player = 9;
     const computer = (empty) => empty[Math.floor(Math.random() * empty.length)];
     return {computer, player};
 })();
 
 
-const round = (function (){
+const check = (function (){
     const player = (choice) => Gameboard.gameboardEmpty.find((ele) => ele == choice);
-    const computer = (choice) => Gameboard.gameboardEmpty.find((ele) => ele == choice);
-    return {player, computer};
+    const index = (choice) => Gameboard.gameboardEmpty.findIndex((ele) => ele == choice);
+    return {player, index};
 })();
 
 
 
+function playerChoose(num) {
+    thisSpace = document.getElementById(num);
+    choice.player = num;
+    choiceIsValid = check.player(choice.player);
+    if (isNaN(choiceIsValid) == false) {
+        Gameboard.placeX(choice.player);
+        thisSpace.innerHTML = 'X';
+        Gameboard.gameboardEmpty.splice(check.index(num), 1);
+        if (Gameboard.gameboardEmpty.length > 0) {
+            let computerChoice = choice.computer(Gameboard.gameboardEmpty);
+            console.log(computerChoice);
+            Gameboard.gameboardEmpty.splice(check.index(computerChoice), 1);
+            Gameboard.placeO(computerChoice);
+            document.getElementById(computerChoice).innerHTML = "O";
+        } else {
+            Alert("Game ended in a draw!");
+        };
+    };
+    console.log(Gameboard.gameboard);
+    console.log(Gameboard.gameboardEmpty);
+}
 
 
 
@@ -52,5 +73,5 @@ function playTicTacToe() {
     return "Done";
 };
 
-console.log(playTicTacToe());
+
 
