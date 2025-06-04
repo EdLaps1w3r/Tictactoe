@@ -1,4 +1,4 @@
-// Gameboard Module
+
 const Gameboard = (() => {
     const board = ["", "", "", "", "", "", "", "", ""];
   
@@ -23,15 +23,15 @@ const Gameboard = (() => {
     return { getBoard, resetBoard, placeMark, isFull };
   })();
   
-  // Player Factory
-  const Player = (name, mark) => {
+
+const Player = (name, mark) => {
     return { name, mark };
-  };
+};
   
-  // Game Controller Module
-  const GameController = (() => {
-    const player1 = Player("Player 1", "X");
-    const player2 = Player("Player 2", "O");
+
+const GameController = (() => {
+    const player1 = Player(prompt("Player 1 please enter your name", "Player 1"), "X");
+    const player2 = Player(prompt("Player 2 please enter your name", "Player 2"), "O");
     let currentPlayer = player1;
     let gameOver = false;
   
@@ -42,9 +42,9 @@ const Gameboard = (() => {
     const checkWinner = () => {
       const board = Gameboard.getBoard();
       const winConditions = [
-        [0,1,2], [3,4,5], [6,7,8], // rows
-        [0,3,6], [1,4,7], [2,5,8], // columns
-        [0,4,8], [2,4,6]           // diagonals
+        [0,1,2], [3,4,5], [6,7,8],
+        [0,3,6], [1,4,7], [2,5,8],
+        [0,4,8], [2,4,6] 
       ];
   
       for (const condition of winConditions) {
@@ -82,10 +82,9 @@ const Gameboard = (() => {
     };
   
     return { playRound, restartGame };
-  })();
-  
-  // Display Controller Module
-  const DisplayController = (() => {
+})();
+
+const DisplayController = (() => {
     const boardElement = document.getElementById("gameboard");
     const gameInfo = document.getElementById("game-info");
     const restartBtn = document.getElementById("restart-btn");
@@ -125,5 +124,5 @@ const Gameboard = (() => {
     render(); // initial render
   
     return { render, showResult };
-  })();
+})();
   
