@@ -1,18 +1,29 @@
-#playArea {
+#gameboard {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    width: 40vw;
-    height: 40vw;
-    align-self: center;
-}
-
-.space {
-    border: 1rem solid black;
-    text-align: center;
-    font-size: 3rem;
-}
-
-.space:hover {
-    background-color: grey;
-}
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+    width: 310px;
+  }
+  
+  .square {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .square.taken {
+    pointer-events: none;
+    background-color: #eee;
+  }
+  
+  #restart-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
